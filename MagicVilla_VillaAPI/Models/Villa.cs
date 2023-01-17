@@ -2,7 +2,7 @@
 {
 	public class Villa
 	{
-		//contains all field
+		//contains all field whether it is sent to endpoint or not unlike dto class
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public DateTime CreatedDate { get; set; }
