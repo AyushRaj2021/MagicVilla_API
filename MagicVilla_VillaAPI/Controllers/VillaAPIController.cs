@@ -34,7 +34,7 @@ namespace MagicVilla_VillaAPI.Controllers
 			try
 			{
                 //Output type is VillaDTO type so we r mapping from villa to villaDto
-                IEnumerable<Models.VillaNumberDTO> villaList = await _dbVilla.GetAllAsync();
+                IEnumerable<Models.Villa> villaList = await _dbVilla.GetAllAsync();
 				_response.Result = _mapper.Map<List<VillaDTO>>(villaList);
 				_response.StatusCode = HttpStatusCode.OK;
 				return Ok(_response);
@@ -106,7 +106,7 @@ namespace MagicVilla_VillaAPI.Controllers
                 //}
                 //we are converting villaDto type to villa type as efcore is of villa type
 
-                Models.VillaNumberDTO villa = _mapper.Map<Models.VillaNumberDTO>(createDTO);
+                Models.Villa villa = _mapper.Map<Models.Villa>(createDTO);
 				//Villa model = new()
 				//{
 				//	Amenity = villaDTO.Amenity,
@@ -178,7 +178,7 @@ namespace MagicVilla_VillaAPI.Controllers
                 //villa.Occupancy = villaDTO.Occupancy;
 
                 //we are converting updateDTO type to villa type as ef core is of villa type
-                Models.VillaNumberDTO model = _mapper.Map<Models.VillaNumberDTO>(updateDTO);
+                Models.Villa model = _mapper.Map<Models.Villa>(updateDTO);
 				//Villa model = new()
 				//{
 				//	Amenity = villaDTO.Amenity,
@@ -232,7 +232,7 @@ namespace MagicVilla_VillaAPI.Controllers
 			{
 				return BadRequest();
 			}
-            Models.VillaNumberDTO model = _mapper.Map<Models.VillaNumberDTO>(villaDTO);
+            Models.Villa model = _mapper.Map<Models.Villa>(villaDTO);
 			//patchDTO.ApplyTo(villaDTO, ModelState);
 			//Villa model = new Villa()
 			//{
