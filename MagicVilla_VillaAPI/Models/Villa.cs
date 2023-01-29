@@ -1,12 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MagicVilla_VillaAPI.Models
+﻿namespace MagicVilla_VillaAPI.Models
 {
 	public class Villa
 	{
-		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+		//contains all field whether it is sent to endpoint or not unlike dto class
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Details { get; set; }
