@@ -36,7 +36,7 @@ namespace MagicVilla_VillaAPI.Controllers
 			try
 			{
                 //Output type is VillaDTO type so we r mapping from villa to villaDto
-                IEnumerable<VillaNumber> villaNumberList = await _dbVillaNumber.GetAllAsync();
+                IEnumerable<VillaNumber> villaNumberList = await _dbVillaNumber.GetAllAsync(includeProperties: "Villa");
 				_response.Result = _mapper.Map<List<VillaNumberDTO>>(villaNumberList);
 				_response.StatusCode = HttpStatusCode.OK;
 				return Ok(_response);
@@ -92,12 +92,12 @@ namespace MagicVilla_VillaAPI.Controllers
 			{				
 				if (await _dbVillaNumber.GetAsync(u => u.VillaNo == createDTO.VillaNo) != null)
 				{
-					ModelState.AddModelError("CustomError", "Villa Number already Exists!");
+					ModelState.AddModelError("ErrorMessages", "Villa Number already Exists!");
 					return BadRequest(ModelState);
 				}
 				if(await _dbVilla.GetAsync(u => u.Id == createDTO.VillaID)==null)
 				{
-					ModelState.AddModelError("CustomError", "Villa ID id Invalid!");
+					ModelState.AddModelError("ErrorMessages", "Villa ID id Invalid!");
 					return BadRequest(ModelState);
 				}
 				if (createDTO == null)
@@ -163,7 +163,7 @@ namespace MagicVilla_VillaAPI.Controllers
 				}
 				if (await _dbVilla.GetAsync(u => u.Id == updateDTO.VillaID) == null)
 				{
-					ModelState.AddModelError("CustomError", "Villa ID id Invalid!");
+					ModelState.AddModelError("ErrorMessages", "Villa ID id Invalid!");
 					return BadRequest(ModelState);
 				}
 
