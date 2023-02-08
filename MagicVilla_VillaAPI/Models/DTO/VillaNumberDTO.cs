@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MagicVilla_VillaAPI.Models.DTO;
+using System.ComponentModel.DataAnnotations;
 
 namespace MagicVilla_VillaAPI.Models.Dto
 {
@@ -10,5 +11,7 @@ namespace MagicVilla_VillaAPI.Models.Dto
 		public string SpecialDetails { get; set; }
 		[Required]
 		public int VillaID { get; set; }
+		public VillaDTO Villa { get; set; }
+
 	}
 }
